@@ -13,15 +13,42 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/readon.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/readon.js"></script>
+        
+        <script>
+        	var $j = jQuery.noConflict(); // to release the "$" symbol
+        
+        	var readon; // declare readon instance
+        	
+        	$j(document).ready(function(){
+        		readon = new ReadOn(); // instantiate readon instance
+        	});
+        
+        </script>
+        
     </head>
     <body>
-        <h1>Readon.js</h1>
+        <div id="readon">
+        	<div class="slide">
+        		<img src="http://placekitten.com/g/700/500" />
+				<p>Schlitz PBR&B salvia, gentrify mustache butcher American Apparel +1 hashtag DIY. Mumblecore mixtape Austin selfies skateboard art party. Dreamcatcher blog chillwave food truck butcher cornhole. Next level street art whatever tote bag. Hoodie lo-fi chia, yr aesthetic Godard ennui skateboard swag craft beer wolf irony dreamcatcher 8-bit. PBR quinoa YOLO kale chips, single-origin coffee tofu bitters lomo tattooed. Art party banh mi flannel, church-key Godard sustainable meggings mustache Vice mlkshk beard cray flexitarian kitsch street art.</p>
+				<p>Flannel authentic mustache gluten-free slow-carb distillery. Jean shorts wayfarers fingerstache deep v Pinterest, yr vinyl four loko put a bird on it lomo authentic PBR&B fixie sriracha. Street art biodiesel crucifix, squid narwhal tote bag mixtape sartorial 8-bit Banksy. Bushwick blog brunch, single-origin coffee art party butcher salvia skateboard fanny pack scenester authentic. Literally Etsy dreamcatcher Marfa wolf, hashtag lomo biodiesel meggings distillery. Vice Austin deep v salvia. Cosby sweater locavore readymade fixie chambray, try-hard occupy Etsy Blue Bottle flannel.</p>
+        	</div>
+        	<div class="slide">
+        		<img src="http://placekitten.com/g/701/500" />
+				<p>Hoodie slow-carb literally irony chia, lo-fi drinking vinegar bicycle rights mlkshk readymade banjo quinoa. Distillery fixie bitters, literally tote bag polaroid mumblecore. Schlitz Tonx bicycle rights, aesthetic ugh kogi Wes Anderson disrupt brunch drinking vinegar. Flexitarian Wes Anderson twee mlkshk. Etsy swag craft beer, readymade chillwave ennui sriracha post-ironic fingerstache pork belly. Austin bitters master cleanse polaroid occupy. Roof party bicycle rights letterpress butcher.</p>
+				<p>Plaid Godard Blue Bottle literally direct trade DIY, VHS Odd Future. Bicycle rights Vice bespoke, craft beer selfies slow-carb Schlitz twee stumptown mixtape try-hard narwhal meh. Quinoa dreamcatcher pickled locavore, Neutra plaid art party aesthetic Thundercats hella artisan forage pork belly four loko. Schlitz plaid scenester, Bushwick Cosby sweater cray keffiyeh fixie Thundercats tousled food truck cornhole bitters Intelligentsia McSweeney's. Small batch pour-over tousled meggings. Craft beer organic gastropub occupy pour-over gentrify. Pinterest distillery vinyl Vice.</p>
+        	</div>
+        	<div class="slide">
+        		<img src="http://placekitten.com/g/701/512" />
+				<p>Plaid Godard Blue Bottle literally direct trade DIY, VHS Odd Future. Bicycle rights Vice bespoke, craft beer selfies slow-carb Schlitz twee stumptown mixtape try-hard narwhal meh. Quinoa dreamcatcher pickled locavore, Neutra plaid art party aesthetic Thundercats hella artisan forage pork belly four loko. Schlitz plaid scenester, Bushwick Cosby sweater cray keffiyeh fixie Thundercats tousled food truck cornhole bitters Intelligentsia McSweeney's. Small batch pour-over tousled meggings. Craft beer organic gastropub occupy pour-over gentrify. Pinterest distillery vinyl Vice.</p>
+				<p>Flannel authentic mustache gluten-free slow-carb distillery. Jean shorts wayfarers fingerstache deep v Pinterest, yr vinyl four loko put a bird on it lomo authentic PBR&B fixie sriracha. Street art biodiesel crucifix, squid narwhal tote bag mixtape sartorial 8-bit Banksy. Bushwick blog brunch, single-origin coffee art party butcher salvia skateboard fanny pack scenester authentic. Literally Etsy dreamcatcher Marfa wolf, hashtag lomo biodiesel meggings distillery. Vice Austin deep v salvia. Cosby sweater locavore readymade fixie chambray, try-hard occupy Etsy Blue Bottle flannel.</p>
+        	</div>
+        </div>
     </body>
 </html>
