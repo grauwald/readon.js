@@ -94,12 +94,36 @@ textarea {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Author's custom styles (Readon CSS)
    ========================================================================== */
 
+body, html {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
 
+#readon {
+	position: relative;
+	width: 100%;
+	overflow-x: hidden;
+	min-height: 100%;
+	height: auto;
+	background: burlywood;
+}
 
+#readon .slide {
+	position: absolute;
+	width: 500px;
+	height: auto;
+	padding: 10px;
+	background: whitesmoke;
+}
 
+#readon .slide img {
+	width: 100%;
+	height: auto;
+}
 
 
 
