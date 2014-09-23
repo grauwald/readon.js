@@ -118,14 +118,60 @@ body, html {
 	height: auto;
 	padding: 10px;
 	background: whitesmoke;
+	
+	/* "magic" animation stuff */
+	-webkit-transition: all 500ms ease-in-out;
+	-moz-transition: all 500ms ease-in-out;
+	-ms-transition: all 500ms ease-in-out;
+	-o-transition: all 500ms ease-in-out;
+	transition: all 500ms ease-in-out; 
 }
+
+#readon .slide.small { width: 250px; }
+#readon .slide.medium { width: 500px; }
+#readon .slide.large { width: 750px; }
+
 
 #readon .slide img {
 	width: 100%;
 	height: auto;
 }
 
+#readon .slide .closeBtn {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 16px;
+	height: 16px;
+	background: white;
+	border: 1px solid grey;
+	font-size: 16px;
+	line-height: 18px;
+	text-align: center;
+	cursor: pointer;
+}
 
+#readon #nextBtn, #readon #lastBtn {
+	position: fixed;
+	top: 75%;
+	margin-top: -24px;
+	z-index: 10000;
+	width: 48px;
+	height: 64px;
+	background: white;
+	border: 1px solid grey;
+	font-size: 4em;
+	line-height: 1em;
+	text-align: center;
+	cursor: pointer;
+}
+
+#readon #nextBtn:hover, #readon #lastBtn:hover {
+	background: gray;
+}
+
+#readon #lastBtn { left: 0; }
+#readon #nextBtn { right: 0; }
 
 
 
