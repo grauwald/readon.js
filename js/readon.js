@@ -32,6 +32,8 @@ ReadOn = function(){
 			// position the element
 			$j(this).css('left', slidesCurrentX);
 			slidesCurrentX += $j(this).outerWidth() + slidesMargin;
+
+			$j(this).click(gotoSlide);
 		});
 	}
 	
@@ -81,6 +83,20 @@ ReadOn = function(){
 			});
 		
 		}
+	}
+
+	var gotoSlide = function() {
+
+		currentIndex = $j(this).data('index');
+		console.log('gotoSlide: ', currentIndex);
+
+		var offset = $j(this).offset().left;
+
+		$slides.each(function(){
+			var left = $j(this).position().left;
+			var pos = left-offset;
+			$j(this).css('left', pos);
+		});
 	}
 
 	_this.helloWorld = function(){
