@@ -2,6 +2,8 @@ ReadOn = function(){
 	_this = this;
 	
 	var $nextBtn, $lastBtn;
+
+	var $readon;
 	
 	var $slides;
 	var slidesCurrentX = 0;
@@ -9,9 +11,13 @@ ReadOn = function(){
 	
 	var currentIndex = 0;
 	var slideWidth;
+
+	var $readonLinks;
 	
 	var init = function(){
 		console.log('Readon Init!');
+
+		$readon = $j('#readon');
 
 		$nextBtn = $j('#readon #nextBtn');
 		$nextBtn.click(nextSlide);
@@ -19,24 +25,78 @@ ReadOn = function(){
 		$lastBtn = $j('#readon #lastBtn');
 		$lastBtn.click(lastSlide);
 		
-		$slides = $j('#readon .slide');
-		
-		$slides.each(function(index){
-			$j(this).data('index', index);
-		
-			// add close button
-			var $closeBtn = $j('<div class="closeBtn">X</div>');
-			$closeBtn.click(destroySlide);
-			$j(this).append($closeBtn);
-		
-			// position the element
-			$j(this).css('left', slidesCurrentX);
-			slidesCurrentX += $j(this).outerWidth() + slidesMargin;
 
-			$j(this).click(gotoSlide);
+		initSlides();
+
+	}
+
+	var initSlides = function () {
+
+		$slides = $j('#readon .slide');
+		$slides.each(function(index){
+			var $slide = $j(this);
+			$slide.data('index', index);
+		
+			if( !$slide.data('exists') ) { // only for new slides
+				// position the element
+				$slide.css('left', slidesCurrentX);
+				slidesCurrentX += $slide.outerWidth() + slidesMargin;
+
+				// add close button
+				var $closeBtn = $j('<div class="closeBtn">X</div>');
+				$closeBtn.click(destroySlide);
+				$slide.append($closeBtn);
+
+				$slide.click(gotoSlide);
+				$slide.data('exists', true);
+			}
+
+		});
+
+		parseReadonLinks();
+
+	}
+
+	var parseReadonLinks = function(){
+		$readonLinks = $j('a.readon');
+
+		$readonLinks.each(function(){
+			$j(this).unbind('click');
+			$j(this).click(openReadonLink);
 		});
 	}
-	
+
+	var openReadonLink = function(event){
+		event.preventDefault();
+		event.stopPropagation();
+
+		console.log('openReadonLink');
+
+		var $slide = $j(this).closest('.slide'); // parent .slide element
+		var slideIndex = $slide.data('index'); // store slide's index
+
+		slidesCurrentX = $slide.offset().left + $slide.outerWidth() + slidesMargin;
+
+		for(var index=slideIndex+1; index<$slides.length; index++){ // destroy all slides here after
+			var $nextSlide = $slides.eq(index);
+			$nextSlide.remove();
+		}
+
+		var divSize;
+		if($j(this).hasClass('small') ) divSize = 'small';
+		else if($j(this).hasClass('medium') ) divSize = 'medium';
+		else if($j(this).hasClass('large') ) divSize = 'large';
+
+		var $articleDiv = $j('<div class="slide '+divSize+'"></div>');
+		$readon.append($articleDiv);
+
+		$textURL = $j(this).attr('href');		
+		$articleDiv.load($textURL, initSlides);
+
+	}
+
+
+
 	var destroySlide = function(){
 		var $slide = $j(this).parent(); // close button's parent element
 		
