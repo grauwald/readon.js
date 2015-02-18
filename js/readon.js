@@ -44,10 +44,12 @@ ReadOn = function(){
 				$slide.css('left', slidesCurrentX);
 				slidesCurrentX += $slide.outerWidth() + slidesMargin;
 
-				// add close button
-				var $closeBtn = $j('<div class="closeBtn">X</div>');
-				$closeBtn.click(destroySlide);
-				$slide.append($closeBtn);
+				if(index!=0){
+					// add close button
+					var $closeBtn = $j('<div class="closeBtn">X</div>');
+					$closeBtn.click(destroySlide);
+					$slide.append($closeBtn);
+				}
 
 				$slide.click(gotoSlide);
 				$slide.data('exists', true);
@@ -104,10 +106,11 @@ ReadOn = function(){
 		
 		slideWidth = $slide.outerWidth();  // store slide's width
 		var slideIndex = $slide.data('index'); // store slide's index
-		
+
 		$slide.remove(); // actually remove the slide
 		
-		for(var index=slideIndex+1; index<$slides.length; index++){ // move all slides here after
+		// move all slides here after
+		for(var index=slideIndex+1; index<$slides.length; index++){ 
 			var $nextSlide = $slides.eq(index);
 			var left = $nextSlide.position().left;
 			var pos = left-(slideWidth+slidesMargin);
@@ -117,7 +120,12 @@ ReadOn = function(){
 			if(pos = 0) currentIndex = $nextSlide.data('index');
 		}
 
-		initSlides();
+		if(slideIndex == $slides.length-1) { // if this is the last slide
+			currentIndex = slideIndex;
+			lastSlide(); // move slides in from left
+		}
+
+		initSlides(); // reset all slides
 	}
 	
 	var nextSlide = function(){
