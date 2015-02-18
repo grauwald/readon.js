@@ -23,6 +23,10 @@ html {
     line-height: 1.4;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
@@ -114,10 +118,13 @@ body, html {
 
 #readon .slide {
 	position: absolute;
-	width: 500px;
-	height: auto;
+	max-width: 95%;
+	height: 100%;
 	padding: 10px;
 	background: whitesmoke;
+
+	overflow: hidden;
+	overflow-y: scroll;
 	
 	/* "magic" animation stuff */
 	-webkit-transition: all 500ms ease-in-out;

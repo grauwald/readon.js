@@ -27,12 +27,14 @@ ReadOn = function(){
 		
 
 		initSlides();
+		$j(window).resize(initSlides);
 
 	}
 
 	var initSlides = function () {
 
 		$slides = $j('#readon .slide');
+		
 		$slides.each(function(index){
 			var $slide = $j(this);
 			$slide.data('index', index);
@@ -112,8 +114,10 @@ ReadOn = function(){
 			$nextSlide.css('left', pos);
 			
 			// set the currentIndex to whoever's at 0px
-			if(pos == 0) currentIndex = $nextSlide.data('index');
+			if(pos = 0) currentIndex = $nextSlide.data('index');
 		}
+
+		initSlides();
 	}
 	
 	var nextSlide = function(){
@@ -125,7 +129,7 @@ ReadOn = function(){
 				var pos = left-(slideWidth+slidesMargin);
 				$j(this).css('left', pos);
 			});
-		
+
 			currentIndex++;
 		}
 	}
