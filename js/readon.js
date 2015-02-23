@@ -42,7 +42,7 @@ ReadOn = function(){
 			if( !$slide.data('exists') ) { // only for new slides
 				// position the element
 				$slide.css('left', slidesCurrentX);
-				slidesCurrentX += $slide.outerWidth() + slidesMargin;
+
 
 				if(index!=0){
 					// add close button
@@ -53,6 +53,12 @@ ReadOn = function(){
 
 				$slide.click(gotoSlide);
 				$slide.data('exists', true);
+
+
+				slidesCurrentX += $slide.outerWidth() + slidesMargin;
+				if( slidesCurrentX >= $j('body').outerWidth() ) $slide.click();
+
+
 			}
 
 		});
