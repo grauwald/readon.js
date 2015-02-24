@@ -20,6 +20,15 @@ ReadOn = function(){
 		$readon = $j('#readon');
 		$readon.on('swipeleft', nextSlide).on('swiperight', lastSlide);
 
+		$readon.on('movestart', function(e) {
+		  // If the movestart is heading off in an upwards or downwards
+		  // direction, prevent it so that the browser scrolls normally.
+		  if ((e.distX > e.distY && e.distX < -e.distY) ||
+		      (e.distX < e.distY && e.distX > -e.distY)) {
+		    e.preventDefault();
+		  }
+		});
+
 		$nextBtn = $j('#readon #nextBtn');
 		$nextBtn.click(nextSlide);
 		
