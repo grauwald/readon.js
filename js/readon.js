@@ -18,7 +18,7 @@ ReadOn = function(){
 		console.log('Readon Init!');
 
 		$readon = $j('#readon');
-		$readon.on('swipeleft', lastSlide).on('swiperight', nextSlide);
+		$readon.on('swipeleft', nextSlide).on('swiperight', lastSlide);
 
 		$nextBtn = $j('#readon #nextBtn');
 		$nextBtn.click(nextSlide);
