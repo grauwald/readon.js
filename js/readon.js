@@ -1,9 +1,9 @@
 ReadOn = function(){
 	_this = this;
-	
-	var $nextBtn, $lastBtn;
 
 	var $readon;
+	
+	var $nextBtn, $lastBtn;
 	
 	var $slides;
 	var slidesCurrentX = 0;
@@ -18,13 +18,13 @@ ReadOn = function(){
 		console.log('Readon Init!');
 
 		$readon = $j('#readon');
+		$readon.on('swipeleft', lastSlide).on('swiperight', nextSlide);
 
 		$nextBtn = $j('#readon #nextBtn');
 		$nextBtn.click(nextSlide);
 		
 		$lastBtn = $j('#readon #lastBtn');
 		$lastBtn.click(lastSlide);
-		
 
 		initSlides();
 		$j(window).resize(initSlides);
