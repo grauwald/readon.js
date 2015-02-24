@@ -54,9 +54,8 @@ ReadOn = function(){
 				$slide.click(gotoSlide);
 				$slide.data('exists', true);
 
-
+				if( slidesCurrentX >= $j('body').outerWidth() ) nextSlide(); //$slide.click();
 				slidesCurrentX += $slide.outerWidth() + slidesMargin;
-				if( slidesCurrentX >= $j('body').outerWidth() ) $slide.click();
 
 
 			}
@@ -98,13 +97,16 @@ ReadOn = function(){
 		else if($j(this).hasClass('large') ) divSize = 'large';
 
 		var $articleDiv = $j('<div class="slide '+divSize+'"></div>');
-		$readon.append($articleDiv);
 
 		$textURL = $j(this).attr('href');		
-		$articleDiv.load($textURL, initSlides);
+		$articleDiv.load($textURL, addSlide);
 
 	}
 
+	var addSlide = function(e){
+		$readon.append($j(this));
+		initSlides();
+	}
 
 
 	var destroySlide = function(){
