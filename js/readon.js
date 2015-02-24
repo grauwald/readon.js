@@ -20,14 +20,7 @@ ReadOn = function(){
 		$readon = $j('#readon');
 		$readon.on('swipeleft', nextSlide).on('swiperight', lastSlide);
 
-		$readon.on('movestart', function(e) {
-		  // If the movestart is heading off in an upwards or downwards
-		  // direction, prevent it so that the browser scrolls normally.
-		  if ((e.distX > e.distY && e.distX < -e.distY) ||
-		      (e.distX < e.distY && e.distX > -e.distY)) {
-		    e.preventDefault();
-		  }
-		});
+		$readon.on('movestart', allowScrollY);
 
 		$nextBtn = $j('#readon #nextBtn');
 		$nextBtn.click(nextSlide);
@@ -39,6 +32,16 @@ ReadOn = function(){
 		$j(window).resize(initSlides);
 
 	}
+
+	var allowScrollY = function(e){
+		  // If the movestart is heading off in an upwards or downwards
+		  // direction, prevent it so that the browser scrolls normally.
+		  if ((e.distX > e.distY && e.distX < -e.distY) ||
+		      (e.distX < e.distY && e.distX > -e.distY)) {
+		    e.preventDefault();
+		  }
+	}
+
 
 	var initSlides = function () {
 
@@ -66,6 +69,7 @@ ReadOn = function(){
 				if( slidesCurrentX >= $j('body').outerWidth() ) nextSlide(); //$slide.click();
 				slidesCurrentX += $slide.outerWidth() + slidesMargin;
 
+				$slide.on('movestart', allowScrollY);
 
 			}
 
